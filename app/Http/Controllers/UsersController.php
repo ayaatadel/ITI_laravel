@@ -35,7 +35,7 @@ class UsersController extends Controller
         $newUser = $request->all();
         $newUser['password'] = Hash::make($newUser['password']);
         User::create($newUser);
-        return redirect('users')->with('success', "The User Account is Created Successfully");
+        return redirect('users');
 
     }
 
@@ -55,13 +55,13 @@ class UsersController extends Controller
         $request['password'] = Hash::make($request['password']);
         $updatedData = $request->except(['_method', '_token']);
         $user->Update($updatedData);
-        return redirect('users')->with('success', "The User is Updated Successfully");
+        return redirect('users');
 
     }
 
     function destroy($id){
         $post = User::find($id)->delete();
-        return redirect('users')->with('success', "The User is Deleted Successfully");
+        return redirect('users');
     }
 
     
