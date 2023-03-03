@@ -38,7 +38,7 @@ class PostsController extends Controller
         // default value to post creator because the user doesn't login
         $newPost['postCreator']=2;
         Post::create($newPost);
-        return redirect('posts')->with('success', "The Post is Created Successfully");
+        return redirect('posts');
 
     }
 
@@ -57,13 +57,13 @@ class PostsController extends Controller
         $updatedPost = $request->except(['_method', '_token']);
         $updatedPost['postCreator']=$post['postCreator'];
         $post->Update($updatedPost);
-        return redirect('posts')->with('success', "The Post is Updated Successfully");
+        return redirect('posts');
 
     }
 
     function destroy($id){
         $post = Post::find($id)->delete();
-        return redirect('posts')->with('success', "The Post is Deleted Successfully");
+        return redirect('posts');
     }
 
     
